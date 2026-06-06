@@ -1,0 +1,12 @@
+torch
+torchvision
+onnxruntime
+opencv-python-headless
+streamlit
+numpy
+pandas
+pytest
+tqdm
+Pillow
+scikit-learn
+matplotlib

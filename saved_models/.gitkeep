@@ -1,0 +1,2 @@
+# Placeholder to maintain saved_models folder structure in version control
+# Save training checkpoints (.pth) and serialized ONNX outputs here
