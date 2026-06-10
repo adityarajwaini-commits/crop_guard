@@ -1,0 +1,160 @@
+{
+  "total_classes": 38,
+  "classes_with_info_count": 38,
+  "classes_missing_count": 0,
+  "classes_with_info": [
+    {
+      "class": "Apple___Apple_scab",
+      "matched_db_key": "Apple Scab"
+    },
+    {
+      "class": "Apple___Black_rot",
+      "matched_db_key": "Apple Black Rot"
+    },
+    {
+      "class": "Apple___Cedar_apple_rust",
+      "matched_db_key": "Cedar Apple Rust"
+    },
+    {
+      "class": "Apple___healthy",
+      "matched_db_key": "Healthy"
+    },
+    {
+      "class": "Blueberry___healthy",
+      "matched_db_key": "Healthy"
+    },
+    {
+      "class": "Cherry_(including_sour)___Powdery_mildew",
+      "matched_db_key": "Powdery Mildew"
+    },
+    {
+      "class": "Cherry_(including_sour)___healthy",
+      "matched_db_key": "Healthy"
+    },
+    {
+      "class": "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot",
+      "matched_db_key": "Cercospora Leaf Spot (Gray Leaf Spot)"
+    },
+    {
+      "class": "Corn_(maize)___Common_rust_",
+      "matched_db_key": "Common Rust"
+    },
+    {
+      "class": "Corn_(maize)___Northern_Leaf_Blight",
+      "matched_db_key": "Northern Leaf Blight"
+    },
+    {
+      "class": "Corn_(maize)___healthy",
+      "matched_db_key": "Healthy"
+    },
+    {
+      "class": "Grape___Black_rot",
+      "matched_db_key": "Grape Black Rot"
+    },
+    {
+      "class": "Grape___Esca_(Black_Measles)",
+      "matched_db_key": "Esca (Black Measles)"
+    },
+    {
+      "class": "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+      "matched_db_key": "Leaf Blight (Isariopsis Leaf Spot)"
+    },
+    {
+      "class": "Grape___healthy",
+      "matched_db_key": "Healthy"
+    },
+    {
+      "class": "Orange___Haunglongbing_(Citrus_greening)",
+      "matched_db_key": "Huanglongbing (Citrus Greening)"
+    },
+    {
+      "class": "Peach___Bacterial_spot",
+      "matched_db_key": "Bacterial Spot"
+    },
+    {
+      "class": "Peach___healthy",
+      "matched_db_key": "Healthy"
+    },
+    {
+      "class": "Pepper,_bell___Bacterial_spot",
+      "matched_db_key": "Bacterial Spot"
+    },
+    {
+      "class": "Pepper,_bell___healthy",
+      "matched_db_key": "Healthy"
+    },
+    {
+      "class": "Potato___Early_blight",
+      "matched_db_key": "Early Blight"
+    },
+    {
+      "class": "Potato___Late_blight",
+      "matched_db_key": "Late Blight"
+    },
+    {
+      "class": "Potato___healthy",
+      "matched_db_key": "Healthy"
+    },
+    {
+      "class": "Raspberry___healthy",
+      "matched_db_key": "Healthy"
+    },
+    {
+      "class": "Soybean___healthy",
+      "matched_db_key": "Healthy"
+    },
+    {
+      "class": "Squash___Powdery_mildew",
+      "matched_db_key": "Powdery Mildew"
+    },
+    {
+      "class": "Strawberry___Leaf_scorch",
+      "matched_db_key": "Leaf Scorch"
+    },
+    {
+      "class": "Strawberry___healthy",
+      "matched_db_key": "Healthy"
+    },
+    {
+      "class": "Tomato___Bacterial_spot",
+      "matched_db_key": "Bacterial Spot"
+    },
+    {
+      "class": "Tomato___Early_blight",
+      "matched_db_key": "Early Blight"
+    },
+    {
+      "class": "Tomato___Late_blight",
+      "matched_db_key": "Late Blight"
+    },
+    {
+      "class": "Tomato___Leaf_Mold",
+      "matched_db_key": "Leaf Mold"
+    },
+    {
+      "class": "Tomato___Septoria_leaf_spot",
+      "matched_db_key": "Septoria Leaf Spot"
+    },
+    {
+      "class": "Tomato___Spider_mites Two-spotted_spider_mite",
+      "matched_db_key": "Spider Mites (Two-spotted Spider Mite)"
+    },
+    {
+      "class": "Tomato___Target_Spot",
+      "matched_db_key": "Target Spot"
+    },
+    {
+      "class": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+      "matched_db_key": "Yellow Leaf Curl Virus"
+    },
+    {
+      "class": "Tomato___Tomato_mosaic_virus",
+      "matched_db_key": "Tomato Mosaic Virus"
+    },
+    {
+      "class": "Tomato___healthy",
+      "matched_db_key": "Healthy"
+    }
+  ],
+  "classes_missing": []
+}

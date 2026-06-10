@@ -1,0 +1,14 @@
+fastapi==0.104.1
+uvicorn==0.24.0
+python-multipart==0.0.6
+pillow==11.3.0
+numpy==2.2.6
+pydantic==2.5.0
+pydantic-settings==2.1.0
+python-dotenv==1.0.0
+torch==2.7.1
+torchvision==0.22.1
+onnxruntime==1.26.0
+opencv-python-headless==4.13.0.92
+scikit-learn==1.7.1
+tqdm==4.67.1

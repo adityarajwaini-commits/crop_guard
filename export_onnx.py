@@ -43,6 +43,13 @@ def export_model_to_onnx(pytorch_model_path: str, onnx_model_path: str):
         output_names=['output'],
         dynamic_axes={'input': {0: 'batch_size'}, 'output': {0: 'batch_size'}}
     )
+    # Save class names list to class_names.txt
+    class_names_path = os.path.join(os.path.dirname(onnx_model_path), "class_names.txt")
+    print(f"Saving class names to {class_names_path}...")
+    with open(class_names_path, "w", encoding="utf-8") as f:
+        for name in class_names:
+            f.write(f"{name}\n")
+
     print("ONNX model export complete.")
     return model, dummy_input, class_names
 

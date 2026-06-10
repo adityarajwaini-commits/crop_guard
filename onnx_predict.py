@@ -28,8 +28,13 @@ class ONNXCropGuardPredictor:
         if class_names is not None:
             self.class_names = class_names
         else:
-            # Fallback placeholder if no dataset configuration is loaded
-            self.class_names = Config.CLASSES
+            class_names_path = os.path.join(os.path.dirname(self.model_path), "class_names.txt")
+            if os.path.exists(class_names_path):
+                with open(class_names_path, "r", encoding="utf-8") as f:
+                    self.class_names = [line.strip() for line in f if line.strip()]
+            else:
+                # Fallback placeholder if no dataset configuration is loaded
+                self.class_names = Config.CLASSES
 
     def preprocess(self, image: Image.Image) -> np.ndarray:
         """

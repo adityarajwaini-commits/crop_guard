@@ -28,7 +28,7 @@ plant_ai/
 
 ---
 
-## 🛠️ Description of Files
+## �️ Description of Files
 
 * **`config.py`**: A centralized configuration file to store training parameters, paths to datasets, model configuration keys, and classes names.
 * **`models/train.py`**: Model setup script which loads transfer weights (ResNet-50), customizes classification output nodes, runs backpropagation, and outputs evaluation scores.

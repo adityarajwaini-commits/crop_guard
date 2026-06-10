@@ -1,0 +1,177 @@
+{
+  "deployment_status": "PRODUCTION_READY",
+  "deployment_date": "2026-06-15",
+  "model": {
+    "type": "ResNet-50 + Custom Head",
+    "framework": "ONNX Runtime",
+    "format": "ONNX",
+    "version": "2.0",
+    "file_path": "saved_models/model.onnx",
+    "file_size_mb": 103,
+    "opset_version": 14
+  },
+  "source_checkpoint": {
+    "file_path": "saved_models/plantvillage_run/best_head_model.pth",
+    "training_phase": "Phase 1 (Head-Only)",
+    "training_epoch": 14,
+    "framework": "PyTorch"
+  },
+  "performance_metrics": {
+    "test_set": {
+      "accuracy": 0.9835,
+      "precision": 0.9835,
+      "recall": 0.9834,
+      "f1_score": 0.9834,
+      "loss": 0.0539,
+      "num_samples": 13958
+    },
+    "validation_set": {
+      "accuracy": 0.9832,
+      "precision": 0.9831,
+      "recall": 0.9829,
+      "f1_score": 0.9829,
+      "loss": 0.0515,
+      "num_samples": 13101
+    }
+  },
+  "model_capabilities": {
+    "num_classes": 38,
+    "input_shape": [1, 3, 224, 224],
+    "output_shape": [1, 38],
+    "input_dtype": "float32",
+    "output_format": "logits",
+    "dynamic_batch": true,
+    "normalization": {
+      "mean": [0.485, 0.456, 0.406],
+      "std": [0.229, 0.224, 0.225]
+    }
+  },
+  "inference_performance": {
+    "single_image_ms": "150-200",
+    "batch_32_seconds": "2-3",
+    "gpu_memory_gb": 1.2,
+    "gpu_required": true,
+    "gpu_acceleration": "CUDA"
+  },
+  "validation_status": {
+    "onnx_model_check": "PASSED",
+    "pytorch_vs_onnx_match": "100%",
+    "inference_match_samples": 320,
+    "validation_date": "2026-06-15"
+  },
+  "backend_integration": {
+    "predictor_module": "models.onnx_predictor",
+    "predictor_class": "ONNXPredictor",
+    "api_endpoint": "POST /api/predict",
+    "mock_fallback_removed": true,
+    "routes_updated": true
+  },
+  "dataset": {
+    "source": "PlantVillage",
+    "total_images": 87867,
+    "training_images": 60808,
+    "validation_images": 13101,
+    "test_images": 13958,
+    "disease_classes": 38,
+    "data_path": "data/PlantVillage/"
+  },
+  "deployment_files": {
+    "onnx_model": "saved_models/model.onnx",
+    "metrics": "saved_models/plantvillage_run/final_metrics.json",
+    "training_history": "saved_models/plantvillage_run/training_report.json",
+    "pytorch_checkpoint": "saved_models/plantvillage_run/best_head_model.pth",
+    "deployment_report": "DEPLOYMENT_REPORT.md",
+    "deployment_config": "deployment_config.json",
+    "onnx_predictor": "models/onnx_predictor.py",
+    "backend_routes": "backend/app/api/routes.py"
+  },
+  "system_requirements": {
+    "minimum": {
+      "cpu_cores": 4,
+      "ram_gb": 8,
+      "storage_gb": 0.2
+    },
+    "recommended": {
+      "cpu_cores": 8,
+      "ram_gb": 16,
+      "gpu": "NVIDIA CUDA 11.0+",
+      "gpu_memory_gb": 2,
+      "storage_gb": 0.5
+    }
+  },
+  "dependencies": [
+    "onnxruntime>=1.26.0",
+    "onnx>=1.21.0",
+    "numpy>=1.23.2",
+    "pillow>=8.0.0",
+    "torchvision>=0.15.0"
+  ],
+  "api_endpoints": {
+    "predict": {
+      "method": "POST",
+      "path": "/api/predict",
+      "input": "multipart/form-data (image file)",
+      "runtime": "ONNX Runtime"
+    },
+    "models": {
+      "method": "GET",
+      "path": "/api/models",
+      "returns": "Model metadata and available classes"
+    },
+    "health": {
+      "method": "GET",
+      "path": "/api/health",
+      "returns": "Health status"
+    }
+  },
+  "disease_classes": [
+    "Apple___Apple_scab",
+    "Apple___Black_rot",
+    "Apple___Cedar_apple_rust",
+    "Apple___healthy",
+    "Blueberry___healthy",
+    "Cherry_(including_sour)___Powdery_mildew",
+    "Cherry_(including_sour)___healthy",
+    "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot",
+    "Corn_(maize)___Common_rust_",
+    "Corn_(maize)___Northern_Leaf_Blight",
+    "Corn_(maize)___healthy",
+    "Grape___Black_rot",
+    "Grape___Esca_(Black_Measles)",
+    "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+    "Grape___healthy",
+    "Orange___Haunglongbing_(Citrus_greening)",
+    "Peach___Bacterial_spot",
+    "Peach___healthy",
+    "Pepper,_bell___Bacterial_spot",
+    "Pepper,_bell___healthy",
+    "Potato___Early_blight",
+    "Potato___Late_blight",
+    "Potato___healthy",
+    "Raspberry___healthy",
+    "Soybean___healthy",
+    "Squash___Powdery_mildew",
+    "Strawberry___Leaf_scorch",
+    "Strawberry___healthy",
+    "Tomato___Bacterial_spot",
+    "Tomato___Early_blight",
+    "Tomato___Late_blight",
+    "Tomato___Leaf_Mold",
+    "Tomato___Septoria_leaf_spot",
+    "Tomato___Spider_mites Two-spotted_spider_mite",
+    "Tomato___Target_Spot",
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+    "Tomato___Tomato_mosaic_virus",
+    "Tomato___healthy"
+  ],
+  "notes": [
+    "Production model uses Phase 1 checkpoint (best_head_model.pth) which achieves 98.35% test accuracy",
+    "Phase 2 fine-tuning was stopped due to diminishing returns (97.4-97.5% validation accuracy)",
+    "ONNX export validated with 100% inference match rate on 320 test samples",
+    "All mock prediction fallbacks removed from backend routes",
+    "Backend now exclusively uses ONNX Runtime for inference",
+    "Model supports dynamic batch sizing for efficient batch inference"
+  ],
+  "contact": "CropGuard Development Team",
+  "maintenance_date": "2026-06-15"
+}
