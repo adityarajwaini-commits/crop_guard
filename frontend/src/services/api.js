@@ -1,9 +1,12 @@
 import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+const normalizedApiBase = API_BASE_URL.replace(/\/+$|^\s+|\s+$/g, '');
+const PREDICT_PATH = normalizedApiBase.endsWith('/api') ? '/predict' : '/api/predict';
+const finalPredictionUrl = `${normalizedApiBase}${PREDICT_PATH}`;
 
 const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: normalizedApiBase,
   timeout: 30000,
   headers: {
     'Content-Type': 'multipart/form-data',
@@ -34,7 +37,12 @@ export const predictDisease = async (imageFile) => {
   const formData = new FormData();
   formData.append('image', imageFile);
   
-  const response = await api.post('/api/predict', formData);
+  console.log('Prediction URL:', finalPredictionUrl);
+  const response = await axios.post(finalPredictionUrl, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
   return response.data;
 };
 
