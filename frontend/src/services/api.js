@@ -34,7 +34,7 @@ export const predictDisease = async (imageFile) => {
   const formData = new FormData();
   formData.append('image', imageFile);
   
-  const response = await api.post('/predict', formData);
+  const response = await api.post('/api/predict', formData);
   return response.data;
 };
 
