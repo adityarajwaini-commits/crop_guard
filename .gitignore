@@ -1,23 +1,73 @@
+# Python
 *.sqlite3
 *.sqlite
 db.sqlite3
-.env.local
-.env
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.egg-info/
+dist/
+build/
+.Python
+env/
 .venv
 venv/
-__pycache__/
-*.pyc
+ENV/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Testing
 .pytest_cache/
 .coverage
 htmlcov/
-.DS_Store
 *.log
+test_results/
+
+# IDEs
 .idea/
 .vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Node/Frontend
 node_modules/
-dist/
-build/
-*.egg-info/
-data/PlantVillage/
+frontend/dist/
+frontend/build/
+frontend/.env.local
+
+# Data (training/validation)
+data/
+data/*
+!data/.gitkeep
+*.csv
+*.xlsx
+
+# Model checkpoints (only keep ONNX)
+*.pth
+*.pt
+*.ckpt
+saved_models/plantvillage_run/*.pth
+backend/saved_models/plantvillage_run/*.pth
+
+# Cache
 .cache/
 *.tmp
+
+# Misc
+.DS_Store
+Thumbs.db
+*.bak
