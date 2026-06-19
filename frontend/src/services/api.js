@@ -1,12 +1,34 @@
 import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
-const normalizedApiBase = API_BASE_URL.replace(/\/+$|^\s+|\s+$/g, '');
-const PREDICT_PATH = normalizedApiBase.endsWith('/api') ? '/predict' : '/api/predict';
-const finalPredictionUrl = `${normalizedApiBase}${PREDICT_PATH}`;
+const normalizeUrl = (url) => url.replace(/^\s+|\s+$/g, '').replace(/\/+$/g, '');
+const normalizedApiBase = normalizeUrl(API_BASE_URL);
+
+const buildApiUrls = (baseUrl) => {
+  if (baseUrl.endsWith('/api/predict')) {
+    return {
+      apiRootUrl: baseUrl.slice(0, -'/predict'.length),
+      finalPredictionUrl: baseUrl,
+    };
+  }
+
+  if (baseUrl.endsWith('/api')) {
+    return {
+      apiRootUrl: baseUrl,
+      finalPredictionUrl: `${baseUrl}/predict`,
+    };
+  }
+
+  return {
+    apiRootUrl: `${baseUrl}/api`,
+    finalPredictionUrl: `${baseUrl}/api/predict`,
+  };
+};
+
+const { apiRootUrl, finalPredictionUrl } = buildApiUrls(normalizedApiBase);
 
 const api = axios.create({
-  baseURL: normalizedApiBase,
+  baseURL: apiRootUrl,
   timeout: 30000,
   headers: {
     'Content-Type': 'multipart/form-data',
