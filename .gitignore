@@ -52,7 +52,6 @@ frontend/.env.local
 # Data (training/validation)
 data/
 data/*
-!data/.gitkeep
 *.csv
 *.xlsx
 
