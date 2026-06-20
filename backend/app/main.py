@@ -48,13 +48,8 @@ app.include_router(routes.router)
 # Root endpoint
 @app.get("/")
 async def root():
-    """Root endpoint"""
-    return {
-        "name": "CropGuard API",
-        "version": "1.0.0",
-        "status": "running",
-        "docs": "/docs"
-    }
+    """Root endpoint for Render health checks"""
+    return {"status": "OK"}
 
 
 @app.get("/ping")
