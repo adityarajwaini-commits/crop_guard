@@ -4,8 +4,6 @@ python-multipart
 pydantic
 pydantic-settings
 python-dotenv
-torch
-torchvision
 onnx
 onnxruntime
 opencv-python-headless
