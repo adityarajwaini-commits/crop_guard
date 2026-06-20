@@ -20,7 +20,7 @@ CORS_ORIGINS = [
     "http://localhost:5173",  # Vite default
     "http://127.0.0.1:3000",
     "http://127.0.0.1:5173",
-    "https://your-vercel-app.vercel.app",  # TODO: replace with your Vercel frontend URL
+    "https://crop-guard-seven.vercel.app",  # Exact live domain pasted here
 ]
 
 # File upload settings
