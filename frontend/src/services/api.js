@@ -19,9 +19,17 @@ const buildApiUrls = (baseUrl) => {
     };
   }
 
+  if (baseUrl.endsWith('/predict')) {
+    return {
+      apiRootUrl: baseUrl.slice(0, -'/predict'.length),
+      finalPredictionUrl: baseUrl,
+    };
+  }
+
+  // For URLs without /api suffix, append /predict directly (for Render backend)
   return {
-    apiRootUrl: `${baseUrl}/api`,
-    finalPredictionUrl: `${baseUrl}/api/predict`,
+    apiRootUrl: baseUrl,
+    finalPredictionUrl: `${baseUrl}/predict`,
   };
 };
 
