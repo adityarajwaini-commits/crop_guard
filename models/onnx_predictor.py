@@ -5,7 +5,6 @@ Provides efficient inference using ONNX Runtime.
 import os
 import numpy as np
 from PIL import Image
-import torchvision.transforms as transforms
 import onnxruntime as ort
 import json
 
@@ -42,15 +41,10 @@ class ONNXPredictor:
         self.class_names = metadata['class_names']
         self.num_classes = len(self.class_names)
         
-        # Build preprocessing transforms matching training specs
-        self.transform = transforms.Compose([
-            transforms.Resize((224, 224)),
-            transforms.ToTensor(),
-            transforms.Normalize(
-                mean=[0.485, 0.456, 0.406],
-                std=[0.229, 0.224, 0.225]
-            )
-        ])
+        # Build preprocessing specs matching training configuration
+        self.image_size = (224, 224)
+        self.mean = np.array([0.485, 0.456, 0.406], dtype=np.float32).reshape(3, 1, 1)
+        self.std = np.array([0.229, 0.224, 0.225], dtype=np.float32).reshape(3, 1, 1)
         
         self.model_path = model_path
         self.metadata_path = metadata_path
@@ -69,11 +63,19 @@ class ONNXPredictor:
         if image.mode != "RGB":
             image = image.convert("RGB")
         
-        # Apply transforms
-        tensor = self.transform(image)
+        # Resize using bilinear interpolation
+        image_resized = image.resize(self.image_size, Image.Resampling.BILINEAR)
         
-        # Convert to numpy and add batch dimension
-        array = tensor.numpy()
+        # Convert to float32 numpy array and scale to [0, 1]
+        array = np.array(image_resized, dtype=np.float32) / 255.0
+        
+        # Transpose from HWC to CHW
+        array = np.transpose(array, (2, 0, 1))
+        
+        # Normalize
+        array = (array - self.mean) / self.std
+        
+        # Add batch dimension and ensure float32 type
         return np.expand_dims(array, axis=0).astype(np.float32)
 
     def predict(self, image: Image.Image, top_k: int = 3) -> dict:

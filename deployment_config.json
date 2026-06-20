@@ -103,8 +103,7 @@
     "onnxruntime>=1.26.0",
     "onnx>=1.21.0",
     "numpy>=1.23.2",
-    "pillow>=8.0.0",
-    "torchvision>=0.15.0"
+    "pillow>=8.0.0"
   ],
   "api_endpoints": {
     "predict": {
