@@ -20,16 +20,20 @@ const buildApiUrls = (baseUrl) => {
   }
 
   if (baseUrl.endsWith('/predict')) {
+    // If it somehow ends with /predict but missing /api, handle it gracefully
+    const root = baseUrl.slice(0, -'/predict'.length);
+    const apiRoot = root.endsWith('/api') ? root : `${root}/api`;
     return {
-      apiRootUrl: baseUrl.slice(0, -'/predict'.length),
-      finalPredictionUrl: baseUrl,
+      apiRootUrl: apiRoot,
+      finalPredictionUrl: `${apiRoot}/predict`,
     };
   }
 
-  // For URLs without /api suffix, append /predict directly (for Render backend)
+  // Fallback: If URL doesn't end with /api or /predict, append /api and /api/predict
+  const apiRoot = `${baseUrl}/api`;
   return {
-    apiRootUrl: baseUrl,
-    finalPredictionUrl: `${baseUrl}/predict`,
+    apiRootUrl: apiRoot,
+    finalPredictionUrl: `${apiRoot}/predict`,
   };
 };
 
@@ -56,7 +60,6 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      // Handle unauthorized
       console.error('Unauthorized');
     }
     return Promise.reject(error);
